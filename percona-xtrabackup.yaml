@@ -1,0 +1,4 @@
+version_control: git
+src_repo: https://github.com/percona/percona-xtrabackup
+tag_prefix: ""
+separator: "."
