@@ -1,12 +1,13 @@
 Name: percona-xtrabackup
 Summary: Online backup for InnoDB/XtraDB in MySQL, Percona Server and MariaDB
 Version: 2.3.6
-Release: 1
+Release: 2
 License: GPLv2
 URL: http://www.percona.com/software/percona-xtrabackup/
 Source: percona-xtrabackup-%{version}.tar.gz
 Patch1: gcc-7-flags-fix.patch
 Patch2: compilec-fix.patch
+Patch3: gcc-10-cflags-fix.patch
 
 Provides: %{name}
 
@@ -50,6 +51,8 @@ This package contains the test suite for Percona Xtrabackup
 %setup -qn %{name}-%{name}-%{version}
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
+
 
 %build
 cmake -DBUILD_CONFIG=xtrabackup_release && make %{?_smp_mflags}
@@ -94,6 +97,9 @@ popd
 %doc COPYING
 
 %changelog
+* Mon Aug 2 2021 bzhaoop <bzhaojyathousandy@gmail.com> - 2.3.6-2
+- Fix gcc 10 compiling issue
+
 * Mon Jul 26 2021 bzhaoop <bzhaojyathousandy@gmail.com> - 2.3.6-1
 - Init project for percona-xtrabackup
 
